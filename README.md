@@ -1,10 +1,14 @@
 ---
-title: Shreeram Gurukul Dongargoan
-emoji: 👁
-colorFrom: gray
-colorTo: pink
+title: "Shreeram Gurukul Dongargoan"
+emoji: ⚡️
+colorFrom: yellow
+colorTo: green
 sdk: static
 pinned: false
+tags:
+  - huggingchat
 ---
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+# Shreeram Gurukul Dongargoan
+
+Built with [HuggingChat](https://huggingface.co/chat).

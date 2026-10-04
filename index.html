@@ -1,19 +1,1592 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shreeram Gurukul English Medium School — Pre-Primary School | Nursery, Jr. KG &amp; Sr. KG</title>
+<meta name="description" content="Shreeram Gurukul English Medium School, Dongargaon, Taluka Sangola, Dist. Solapur — a pre-primary school offering Nursery, Jr. KG and Sr. KG. A joyful beginning to your child's learning journey.">
+
+<!--
+  ============================================================================
+  SHREERAM GURUKUL ENGLISH MEDIUM SCHOOL — PUBLIC HOME PAGE
+  ----------------------------------------------------------------------------
+  The website now STARTS WITH THE WELCOME MESSAGE (no photograph at the top).
+  The school photographs appear in the Intro (About) section and in the
+  photo gallery sections.
+
+  HOW TO REPLACE THE PHOTOGRAPHS (edit text only — no coding needed)
+  ----------------------------------------------------------------------------
+  1. Scroll to the <script> block at the bottom of this file.
+  2. Find the object named  SITE_IMAGES.
+  3. MAIN SCHOOL PHOTOGRAPH  ->  about: "images/school-building.jpg"
+     (this is the large photograph in the Intro / About section)
+  4. GALLERY PHOTOGRAPHS -> fill in the "src" of each entry in the
+     SITE_IMAGES.slider list (add more entries to add more photos), and the
+     values inside SITE_IMAGES.gallery for the photo grid further down.
+  5. Any slot left as "" automatically shows a clearly labelled placeholder.
+
+  SCHOOL INFORMATION, NOTICES, CONTACT DETAILS AND THE WHATSAPP GROUP LINK are
+  all defined in the SITE object just below SITE_IMAGES — the same values the
+  school administrator will later be able to edit from the admin panel.
+  ============================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================ DESIGN TOKENS ============================ */
+:root{
+  --ink:#122c33;
+  --ink-soft:#5a7078;
+  --primary:#1f7a6f;
+  --primary-dark:#155c54;
+  --primary-deep:#0f3a37;
+  --primary-soft:#e7f4f1;
+  --accent:#f0a33c;
+  --accent-dark:#d98a1c;
+  --accent-soft:#fdf2df;
+  --blue-soft:#e9f1fb;
+  --whatsapp:#25d366;
+  --whatsapp-dark:#1da851;
+  --cream:#fbf8f3;
+  --line:#e8e1d6;
+  --white:#ffffff;
+  --r-lg:24px;
+  --r-md:16px;
+  --r-sm:12px;
+  --shadow-sm:0 2px 10px -4px rgba(18,44,51,.14);
+  --shadow:0 18px 40px -28px rgba(18,44,51,.55);
+  --shadow-lg:0 30px 60px -34px rgba(18,44,51,.6);
+  --font-body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-display:"Fraunces",Georgia,"Times New Roman",serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;font-family:var(--font-body);color:var(--ink);
+  background:var(--cream);line-height:1.65;font-size:16px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;color:var(--ink);line-height:1.15;margin:0}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+.container{width:min(1180px,92%);margin-inline:auto}
+.section{padding:clamp(56px,7vw,102px) 0}
+.section--flush{padding-top:0}
+.section--white{background:var(--white)}
+.section--cream{background:var(--cream)}
+section[id]{scroll-margin-top:92px}
+
+/* ============================ TYPOGRAPHY HELPERS ======================= */
+.eyebrow{
+  display:inline-block;font-size:.76rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--primary);
+}
+.eyebrow--light{color:#a9e6da}
+.section-head{max-width:680px;margin:0 auto clamp(34px,4vw,52px);text-align:center}
+.section-head h2{font-size:clamp(1.75rem,3.4vw,2.5rem);margin:.55rem 0 .8rem}
+.section-head p{color:var(--ink-soft);font-size:1.02rem}
+
+/* ================================ BUTTONS ============================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.86rem 1.55rem;border-radius:999px;font-weight:600;font-size:.95rem;
+  border:1px solid transparent;cursor:pointer;text-align:center;
+  transition:transform .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease;
+  white-space:nowrap;
+}
+.btn svg{width:18px;height:18px;flex:none}
+.btn--primary{background:var(--primary);color:#fff;box-shadow:0 14px 26px -16px rgba(31,122,111,.95)}
+.btn--primary:hover{background:var(--primary-dark);transform:translateY(-2px)}
+.btn--accent{background:var(--accent);color:#42290a;box-shadow:0 14px 26px -16px rgba(240,163,60,.95)}
+.btn--accent:hover{background:var(--accent-dark);transform:translateY(-2px)}
+.btn--glass{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.55);backdrop-filter:blur(8px)}
+.btn--glass:hover{background:rgba(255,255,255,.26);transform:translateY(-2px)}
+.btn--outline{background:#fff;color:var(--primary-dark);border-color:var(--line)}
+.btn--outline:hover{border-color:var(--primary);color:var(--primary-dark);transform:translateY(-2px)}
+.btn--light{background:#fff;color:var(--primary-deep)}
+.btn--light:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn--whatsapp{background:var(--whatsapp);color:#08351b;box-shadow:0 14px 26px -16px rgba(37,211,102,.95)}
+.btn--whatsapp:hover{background:var(--whatsapp-dark);color:#fff;transform:translateY(-2px)}
+.btn--sm{padding:.66rem 1.2rem;font-size:.9rem}
+
+/* ================================ HEADER =============================== */
+.site-header{
+  position:sticky;top:0;z-index:80;
+  background:rgba(251,248,243,.9);backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .3s, box-shadow .3s, background-color .3s;
+}
+.site-header.is-scrolled{border-color:var(--line);box-shadow:0 12px 30px -26px rgba(18,44,51,.8)}
+.header-inner{display:flex;align-items:center;gap:1.1rem;padding:.72rem 0}
+.brand{display:flex;align-items:center;gap:.7rem;flex:none}
+.brand-mark{
+  width:46px;height:46px;border-radius:14px;flex:none;
+  background:linear-gradient(140deg,#2b9486,var(--primary-dark));
+  color:#fff;display:grid;place-items:center;position:relative;
+  font-family:var(--font-display);font-size:1.02rem;font-weight:600;letter-spacing:.02em;
+  box-shadow:0 10px 20px -12px rgba(21,92,84,.9);
+}
+.brand-mark::after{content:"";position:absolute;right:7px;bottom:7px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.brand-text{display:flex;flex-direction:column;line-height:1.12}
+.brand-name{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--ink)}
+.brand-sub{font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+
+.nav{display:flex;align-items:center;gap:.1rem;margin-left:auto}
+.nav a{
+  padding:.5rem .74rem;border-radius:999px;font-size:.93rem;font-weight:500;
+  color:var(--ink-soft);transition:background-color .2s,color .2s;
+}
+.nav a:hover,.nav a.is-active{background:var(--primary-soft);color:var(--primary-dark)}
+.header-actions{display:flex;align-items:center;gap:.55rem;flex:none}
+.menu-toggle{
+  display:none;width:46px;height:46px;border-radius:13px;border:1px solid var(--line);
+  background:#fff;cursor:pointer;place-items:center;
+}
+.menu-toggle span{display:block;width:19px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:.25s}
+.menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:19px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
+.menu-toggle span::before{top:-6px}.menu-toggle span::after{top:6px}
+.is-open .menu-toggle span{background:transparent}
+.is-open .menu-toggle span::before{transform:translateY(6px) rotate(45deg)}
+.is-open .menu-toggle span::after{transform:translateY(-6px) rotate(-45deg)}
+
+.mobile-panel{display:none;border-top:1px solid var(--line);background:#fff;padding:.7rem 0 1.1rem}
+.mobile-panel nav{display:flex;flex-direction:column}
+.mobile-panel nav a{padding:.78rem .3rem;border-bottom:1px solid var(--line);font-weight:500;color:var(--ink)}
+.mobile-panel .mobile-actions{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+
+/* ==================== HERO — WELCOME (text first, no photo) ============ */
+.hero{
+  position:relative;overflow:hidden;color:#fff;text-align:center;
+  background:linear-gradient(140deg,#0e322f 0%,#14544d 55%,#1f7a6f 100%);
+  padding:clamp(58px,8vw,104px) 0 clamp(60px,8vw,106px);
+}
+.hero::before{
+  content:"";position:absolute;width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,163,60,.18),transparent 66%);
+  top:-200px;left:-150px;pointer-events:none;
+}
+.hero::after{
+  content:"";position:absolute;width:460px;height:460px;border-radius:50%;
+  background:radial-gradient(circle,rgba(37,211,102,.12),transparent 68%);
+  bottom:-220px;right:-140px;pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;max-width:900px;margin-inline:auto}
+.hero h1{color:#fff;font-size:clamp(1.9rem,4vw,3rem);line-height:1.1;margin:.8rem 0 .7rem}
+.hero-sub{font-family:var(--font-display);font-size:clamp(1rem,1.6vw,1.22rem);color:#cdeee7;margin-bottom:.7rem}
+.hero-tagline{font-size:clamp(1rem,1.5vw,1.12rem);color:rgba(255,255,255,.9);max-width:620px;margin-inline:auto}
+.hero-btns{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:2rem}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.8rem}
+.hero-chips li{
+  font-size:.8rem;font-weight:600;letter-spacing:.03em;padding:.4rem .9rem;border-radius:999px;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);color:#eafaf6;backdrop-filter:blur(6px);
+}
+.hero-info{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem 1.9rem;
+  margin-top:2.2rem;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.16);
+  font-size:.88rem;color:rgba(255,255,255,.86);
+}
+.hero-info li{display:flex;align-items:center;gap:.5rem;text-align:left}
+.hero-info svg{width:16px;height:16px;color:#9fe3d6;flex:none}
+.hero-info a{color:#fff;font-weight:600;border-bottom:1px solid rgba(255,255,255,.4);transition:color .2s,border-color .2s}
+.hero-info a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ============================ PLACEHOLDER MEDIA ======================== */
+.ph{
+  position:relative;display:grid;place-content:center;justify-items:center;gap:.42rem;
+  background:linear-gradient(135deg,#eef5f2 0%,#f6f1e7 100%);
+  color:#7d9096;text-align:center;padding:1.1rem;width:100%;height:100%;
+}
+.ph::before{
+  content:"";position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(rgba(31,122,111,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,122,111,.07) 1px,transparent 1px);
+  background-size:26px 26px;
+}
+.ph > *{position:relative}
+.ph svg{width:26px;height:26px;color:var(--primary);opacity:.75}
+.ph-label{font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5f767c}
+.ph-hint{font-size:.68rem;color:#8b9ba0}
+.ph.has-img{background-size:cover;background-position:center;background-repeat:no-repeat}
+.ph.has-img::before,.ph.has-img > *{display:none}
+
+/* ============================== ABOUT SECTION ========================== */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,60px);align-items:center}
+.about-copy p{color:var(--ink-soft);margin-top:1rem;font-size:1.02rem}
+.about-points{display:grid;gap:.85rem;margin-top:1.7rem}
+.about-points li{display:flex;gap:.7rem;align-items:flex-start;font-size:.97rem;color:var(--ink)}
+.about-points .dot{
+  width:26px;height:26px;border-radius:9px;flex:none;display:grid;place-items:center;
+  background:var(--primary-soft);color:var(--primary-dark);margin-top:.15rem;
+}
+.about-points .dot svg{width:14px;height:14px}
+.about-photo{border-radius:var(--r-lg);min-height:340px;box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden}
+.about-facts{
+  margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:20px;
+  padding:1.1rem 1.25rem;box-shadow:var(--shadow-sm);display:grid;gap:.75rem;
+}
+.about-facts div{display:flex;justify-content:space-between;gap:1rem;font-size:.86rem;border-bottom:1px dashed var(--line);padding-bottom:.6rem}
+.about-facts div:last-child{border-bottom:none;padding-bottom:0}
+.about-facts .k{color:var(--ink-soft);font-weight:600}
+.about-facts .v{color:var(--ink);text-align:right;font-weight:500}
+
+/* ================= WHATSAPP CARD (directly below the intro) ============ */
+.whatsapp-card{
+  margin-top:clamp(30px,4vw,50px);
+  display:grid;grid-template-columns:auto 1fr auto;gap:clamp(16px,2.4vw,30px);align-items:center;
+  background:linear-gradient(120deg,#f2fbf5,#eaf7ef);
+  border:1px solid #d8ebdf;border-radius:26px;
+  padding:clamp(1.3rem,3vw,2rem);box-shadow:var(--shadow-sm);
+}
+.whatsapp-card__icon{
+  width:58px;height:58px;border-radius:18px;flex:none;display:grid;place-items:center;
+  background:#e0f6e8;color:#128c4a;
+}
+.whatsapp-card__icon svg{width:28px;height:28px}
+.whatsapp-card__copy .eyebrow{color:#128c4a}
+.whatsapp-card__copy h3{font-size:clamp(1.2rem,2.2vw,1.5rem);margin:.35rem 0 .5rem}
+.whatsapp-card__copy p{font-size:.92rem;color:var(--ink-soft);max-width:640px}
+.whatsapp-card .btn{justify-self:end}
+
+/* ========================= PHOTO SLIDER (GALLERY) ===================== */
+.slider-shell{position:relative;border-radius:28px;overflow:hidden;background:#0f3a37;box-shadow:var(--shadow-lg)}
+.slider-viewport{overflow:hidden}
+.slider-track{display:flex;transition:transform .6s cubic-bezier(.42,.02,.2,1);will-change:transform}
+.slide{flex:0 0 100%;position:relative;aspect-ratio:16/9;margin:0}
+.slide .ph{position:absolute;inset:0;height:100%}
+.slide-caption{
+  position:absolute;left:16px;bottom:16px;z-index:3;
+  font-size:.78rem;font-weight:600;letter-spacing:.04em;color:#fff;
+  background:rgba(7,35,41,.55);border:1px solid rgba(255,255,255,.22);
+  padding:.38rem .85rem;border-radius:999px;backdrop-filter:blur(6px);
+}
+.slider-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:4;
+  width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,255,255,.93);color:var(--primary-dark);
+  display:grid;place-items:center;box-shadow:0 12px 26px -14px rgba(0,0,0,.7);
+  transition:background-color .2s, transform .2s;
+}
+.slider-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.07)}
+.slider-arrow svg{width:22px;height:22px}
+.slider-arrow.prev{left:14px}
+.slider-arrow.next{right:14px}
+.slider-nav{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:.75rem;flex-wrap:wrap}
+.slider-dots{display:flex;align-items:center;gap:8px}
+.slider-dots button{
+  width:9px;height:9px;padding:0;border-radius:50%;border:none;cursor:pointer;
+  background:#cbd6d2;transition:width .25s, background-color .25s;
+}
+.slider-dots button:hover{background:#a9bdb7}
+.slider-dots button.is-active{background:var(--primary);width:28px;border-radius:999px}
+.slider-count{font-size:.8rem;font-weight:600;color:var(--ink-soft);letter-spacing:.06em}
+.slider-hint{font-size:.82rem;color:var(--ink-soft);text-align:center;margin-top:1.1rem}
+
+/* ============================= OUR CLASSES ============================= */
+.class-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.class-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:1.7rem 1.6rem 1.8rem;
+  display:flex;flex-direction:column;gap:.55rem;box-shadow:var(--shadow-sm);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.class-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#dfd6c7}
+.class-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.35rem}
+.class-icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center}
+.class-icon svg{width:24px;height:24px}
+.class-index{font-family:var(--font-display);font-size:1.5rem;color:#e4ded2}
+.class-card h3{font-size:1.28rem;letter-spacing:.01em}
+.class-card p{color:var(--ink-soft);font-size:.95rem}
+.class-note{margin-top:auto;padding-top:1rem;border-top:1px dashed var(--line);font-size:.8rem;color:var(--ink-soft)}
+.tint-amber{background:var(--accent-soft);color:var(--accent-dark)}
+.tint-teal{background:var(--primary-soft);color:var(--primary-dark)}
+.tint-blue{background:var(--blue-soft);color:#2c5f9e}
+.classes-note{
+  margin-top:26px;text-align:center;font-size:.88rem;color:var(--ink-soft);
+  background:#fff;border:1px dashed var(--line);border-radius:14px;padding:.85rem 1.1rem;max-width:720px;margin-inline:auto;
+}
+
+/* ============================= WHY CHOOSE ============================== */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.why-card{
+  background:#fff;border:1px solid var(--line);border-radius:20px;padding:1.5rem 1.3rem;
+  box-shadow:var(--shadow-sm);transition:transform .25s ease, box-shadow .25s ease;
+}
+.why-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.why-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary-dark);margin-bottom:.9rem}
+.why-icon svg{width:22px;height:22px}
+.why-card h3{font-size:1.02rem;margin-bottom:.4rem}
+.why-card p{font-size:.88rem;color:var(--ink-soft)}
+
+/* ============================== ACTIVITIES ============================= */
+.activity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.media-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .25s ease, box-shadow .25s ease}
+.media-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.media-card .ph{aspect-ratio:16/10;transition:transform .5s ease}
+.media-card:hover .ph{transform:scale(1.04)}
+.media-body{padding:1.05rem 1.2rem 1.25rem}
+.media-body h3{font-size:1.05rem;margin-bottom:.28rem}
+.media-body p{font-size:.87rem;color:var(--ink-soft)}
+
+/* ============================= ADMISSIONS CTA ========================== */
+.cta-band{
+  position:relative;overflow:hidden;border-radius:30px;color:#fff;
+  background:linear-gradient(120deg,#124f49 0%,#1f7a6f 52%,#2c9384 100%);
+  padding:clamp(2.1rem,5vw,3.6rem);box-shadow:var(--shadow-lg);
+}
+.cta-band::before,.cta-band::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.09)}
+.cta-band::before{width:320px;height:320px;right:-90px;top:-120px}
+.cta-band::after{width:220px;height:220px;right:130px;bottom:-140px;background:rgba(240,163,60,.16)}
+.cta-inner{position:relative;display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:space-between;z-index:1}
+.cta-copy{max-width:640px}
+.cta-copy .eyebrow{color:#ffd9a1}
+.cta-copy h2{color:#fff;font-size:clamp(1.7rem,3.2vw,2.4rem);margin:.6rem 0 .8rem}
+.cta-copy p{color:rgba(255,255,255,.92);font-size:1.03rem}
+.cta-side{display:flex;flex-direction:column;gap:.7rem;align-items:flex-start}
+.cta-side small{color:rgba(255,255,255,.78);font-size:.8rem}
+
+/* ================================ NOTICES ============================== */
+.notices-wrap{display:grid;grid-template-columns:1fr;gap:1rem}
+.notice{
+  display:grid;grid-template-columns:auto 1fr auto;gap:1.1rem;align-items:center;
+  background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.05rem 1.3rem;
+  box-shadow:var(--shadow-sm);transition:border-color .2s, box-shadow .2s;
+}
+.notice:hover{border-color:#dcd2c2;box-shadow:var(--shadow)}
+.notice-date{
+  width:74px;flex:none;border-radius:14px;background:var(--primary-soft);color:var(--primary-dark);
+  text-align:center;padding:.5rem .35rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;line-height:1.3;
+}
+.notice-main h3{font-size:1rem;margin-bottom:.2rem}
+.notice-main p{font-size:.86rem;color:var(--ink-soft)}
+.notice-tag{
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.32rem .7rem;border-radius:999px;background:var(--accent-soft);color:var(--accent-dark);white-space:nowrap;
+}
+.notice-foot{margin-top:1.3rem;font-size:.83rem;color:var(--ink-soft);text-align:center;background:#fff;border:1px dashed var(--line);border-radius:14px;padding:.85rem 1.1rem}
+
+/* ================================ GALLERY ============================== */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:158px;gap:14px}
+.gallery-item{border-radius:18px;overflow:hidden;position:relative;border:1px solid var(--line);transition:transform .3s ease, box-shadow .3s ease;margin:0}
+.gallery-item:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 2}
+
+/* ============================= PARENT PORTAL =========================== */
+.portal{
+  position:relative;overflow:hidden;border-radius:30px;color:#fff;
+  background:linear-gradient(135deg,#10312e 0%,#164a45 60%,#1c5c54 100%);
+  padding:clamp(2.1rem,5vw,3.4rem);
+}
+.portal::after{
+  content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,163,60,.22),transparent 62%);right:-120px;bottom:-190px;
+}
+.portal-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(26px,4vw,54px);align-items:center}
+.portal h2{color:#fff;font-size:clamp(1.7rem,3.2vw,2.3rem);margin:.6rem 0 .8rem}
+.portal p.lead{color:rgba(255,255,255,.9);font-size:1.02rem}
+.portal-list{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem}
+.portal-list li{
+  display:flex;align-items:center;gap:.6rem;font-size:.9rem;font-weight:500;
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;padding:.72rem .9rem;color:#eefaf7;
+}
+.portal-list svg{width:16px;height:16px;color:var(--accent);flex:none}
+.portal-cta{margin-top:1.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:.9rem}
+.portal-cta small{color:rgba(255,255,255,.7);font-size:.8rem}
+.portal-managed{margin-top:1.4rem;font-size:.78rem;color:rgba(255,255,255,.6);max-width:520px}
+
+/* ================================ CONTACT ============================== */
+.contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(26px,4vw,50px);align-items:start}
+.contact-list{display:grid;gap:1rem}
+.contact-item{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.15rem 1.3rem;box-shadow:var(--shadow-sm)}
+.contact-icon{width:42px;height:42px;border-radius:13px;flex:none;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary-dark)}
+.contact-icon svg{width:20px;height:20px}
+.contact-item h3{font-size:.95rem;margin-bottom:.2rem}
+.contact-item p{font-size:.9rem;color:var(--ink-soft)}
+.contact-item a{color:var(--primary-dark);font-weight:600}
+.contact-item a:hover{text-decoration:underline}
+.placeholder-value{color:#9aa9ad;font-style:italic}
+.map-frame{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;min-height:360px;box-shadow:var(--shadow-sm);background:#fff;display:flex}
+.map-frame .ph{gap:.6rem}
+.map-frame .ph svg{width:34px;height:34px}
+
+/* ================================= FOOTER ============================== */
+.site-footer{background:#0e2b2d;color:rgba(255,255,255,.78);padding:clamp(44px,5vw,68px) 0 0}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1.1fr 1.2fr;gap:clamp(24px,4vw,46px)}
+.footer-brand{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+.footer-brand .brand-name{color:#fff}
+.footer-brand .brand-sub{color:rgba(255,255,255,.55)}
+.footer-about{font-size:.88rem;color:rgba(255,255,255,.66);max-width:300px}
+.footer-col h4{color:#fff;font-size:.83rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;font-family:var(--font-body);font-weight:700}
+.footer-col ul{display:grid;gap:.6rem}
+.footer-col a{font-size:.9rem;color:rgba(255,255,255,.72);transition:color .2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-contact li{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.5}
+.footer-btn{margin-top:.4rem}
+.footer-admin{
+  margin-top:.4rem;font-size:.82rem;color:rgba(255,255,255,.55);
+  display:inline-flex;align-items:center;gap:.4rem;border-bottom:1px dashed rgba(255,255,255,.3);
+  padding-bottom:1px;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer;
+  transition:color .2s;
+}
+.footer-admin:hover{color:#fff}
+.footer-admin svg{width:13px;height:13px}
+.footer-bottom{
+  margin-top:clamp(32px,4vw,52px);border-top:1px solid rgba(255,255,255,.12);
+  padding:1.2rem 0;display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;
+  font-size:.8rem;color:rgba(255,255,255,.55);
+}
+
+/* ================================= TOAST =============================== */
+.toast{
+  position:fixed;left:50%;bottom:26px;z-index:200;transform:translate(-50%,22px);
+  opacity:0;pointer-events:none;transition:opacity .3s ease, transform .3s ease;
+  background:#122c33;color:#fff;padding:.85rem 1.25rem;border-radius:14px;
+  font-size:.9rem;box-shadow:0 24px 44px -22px rgba(0,0,0,.7);max-width:min(92vw,460px);text-align:center;
+}
+.toast.is-visible{opacity:1;transform:translate(-50%,0)}
+
+/* ============================== ANIMATIONS ============================= */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease, transform .65s ease}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* ============================== RESPONSIVE ============================= */
+@media (max-width:1024px){
+  .nav{display:none}
+  .header-actions .btn--outline{display:none}
+  .menu-toggle{display:grid}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-auto-rows:140px}
+}
+@media (min-width:641px){
+  .why-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1000px){
+  .why-grid{grid-template-columns:repeat(5,1fr)}
+  .portal-grid{grid-template-columns:1fr 1.05fr}
+}
+@media (max-width:900px){
+  .class-grid,.activity-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .portal-grid{grid-template-columns:1fr}
+  .whatsapp-card{grid-template-columns:1fr}
+  .whatsapp-card .btn{justify-self:start;width:100%}
+}
+@media (max-width:640px){
+  .header-actions .btn--primary{display:none}
+  .brand-sub{display:none}
+  .hero-btns .btn{flex:1 1 100%}
+  .hero-info{flex-direction:column;align-items:center;gap:.7rem}
+  .slide{aspect-ratio:4/3}
+  .slider-arrow{width:42px;height:42px}
+  .slider-arrow.prev{left:8px}
+  .slider-arrow.next{right:8px}
+  .slide-caption{left:10px;bottom:10px;font-size:.7rem}
+  .class-grid,.activity-grid,.why-grid,.portal-list{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:128px}
+  .gallery-item:first-child{grid-column:span 2;grid-row:span 1}
+  .notice{grid-template-columns:auto 1fr;gap:.9rem}
+  .notice-tag{grid-column:2;justify-self:start}
+  .footer-grid{grid-template-columns:1fr}
+  .cta-inner{flex-direction:column;align-items:flex-start}
+  .cta-side{width:100%}
+  .cta-side .btn{width:100%}
+}
+@media (max-width:420px){
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-item:first-child{grid-column:span 1}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================================ HEADER ============================== -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="#home" aria-label="Shreeram Gurukul English Medium School — home">
+      <span class="brand-mark" aria-hidden="true">SG</span>
+      <span class="brand-text">
+        <span class="brand-name" data-site="shortName">Shreeram Gurukul</span>
+        <span class="brand-sub">English Medium School</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#home" class="is-active">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#academics">Academics</a>
+      <a href="#activities">Activities</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn--outline btn--sm" type="button" data-portal-login>Parent Login</button>
+      <a class="btn btn--primary btn--sm" href="#admissions">Admission Enquiry</a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <div class="container">
+      <nav aria-label="Mobile navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#academics">Academics</a>
+        <a href="#activities">Activities</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="mobile-actions">
+        <button class="btn btn--outline" type="button" data-portal-login>Parent Login</button>
+        <a class="btn btn--primary" href="#admissions">Admission Enquiry</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================== HERO — THE WEBSITE STARTS HERE ==================== -->
+<section class="hero" id="home">
+  <div class="container hero-inner">
+    <span class="eyebrow eyebrow--light">Welcome</span>
+    <h1>Welcome to <span data-site="name">Shreeram Gurukul English Medium School</span></h1>
+    <p class="hero-sub">Pre-Primary School</p>
+    <p class="hero-tagline">A joyful beginning to your child's learning journey.</p>
+
+    <div class="hero-btns">
+      <a class="btn btn--accent" href="#about">
+        Explore Our School
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn--glass" href="#admissions">Admission Enquiry</a>
+    </div>
+
+    <ul class="hero-chips">
+      <li>Nursery</li>
+      <li>Jr. KG</li>
+      <li>Sr. KG</li>
+      <li data-site="establishedShort">Since 2026</li>
+    </ul>
+
+    <ul class="hero-info">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <span data-site="addressInline">Dongargaon, Taluka - Sangola, District - Solapur, Maharashtra 413309</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3.5l1.6 4-2 1.3a12 12 0 0 0 5.6 5.6l1.3-2 4 1.6V19a1.5 1.5 0 0 1-1.7 1.5A15.5 15.5 0 0 1 3.5 5.7 1.5 1.5 0 0 1 5 4Z"/></svg>
+        <a href="tel:+919767174229" data-site="phoneLink">9767174229</a>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3.5v3M16 3.5v3M3.5 10h17"/></svg>
+        <span data-site="established">Established: Since 2026</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========================= INTRO / ABOUT ============================== -->
+<section class="section section--cream" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">Who we are</span>
+        <h2 style="font-size:clamp(1.75rem,3.4vw,2.5rem);margin:.55rem 0 .4rem">About Shreeram Gurukul</h2>
+        <p>
+          <span data-site="name">Shreeram Gurukul English Medium School</span> is a pre-primary school
+          located at Dongargaon, Taluka Sangola, District Solapur, Maharashtra. We welcome young
+          children into a safe, caring and engaging environment in which every child feels
+          comfortable, confident and genuinely happy to come to school.
+        </p>
+        <p>
+          Our approach is simple and child-centred: children learn through activities, exploration
+          and meaningful experiences. Songs, stories, art, play and conversation are not extras —
+          they are how young minds grow. Alongside this, our classrooms gently build language,
+          early numeracy, social skills and the confidence to express oneself.
+        </p>
+        <p>
+          We believe that a child's earliest school years shape how they feel about learning for
+          life. Our aim is to make those years warm, joyful and full of discovery.
+        </p>
+
+        <ul class="about-points">
+          <li>
+            <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span>
+            <span>A safe, caring and child-friendly environment</span>
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span>
+            <span>Learning through activities, exploration and experience</span>
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span>
+            <span>Focus on the all-round development of every child</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="about-visual reveal">
+        <div class="about-photo ph" data-img="about" role="img" aria-label="Placeholder for a photograph of Shreeram Gurukul English Medium School">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m4 18 5.5-5.2 3.2 3 3.3-3.1L20 18"/>
+          </svg>
+          <span class="ph-label">School Photograph</span>
+          <span class="ph-hint">Replace via SITE_IMAGES.about</span>
+        </div>
+
+        <div class="about-facts">
+          <div><span class="k">School Type</span><span class="v">Pre-Primary School</span></div>
+          <div><span class="k">Established</span><span class="v" data-site="establishedShort">Since 2026</span></div>
+          <div><span class="k">Classes</span><span class="v">Nursery &middot; Jr. KG &middot; Sr. KG</span></div>
+          <div><span class="k">Chairperson</span><span class="v" data-site="chairperson">Rajendra Maruti Babary</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- WHATSAPP GROUP — DIRECTLY BELOW THE INTRO ---- -->
+    <div class="whatsapp-card reveal" id="community">
+      <span class="whatsapp-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.5 9.5 0 0 1-3-.5L4 21l1.4-4.2A8.2 8.2 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5Z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/></svg>
+      </span>
+      <div class="whatsapp-card__copy">
+        <span class="eyebrow">Parent community</span>
+        <h3>Join Our WhatsApp Group</h3>
+        <p>
+          Parents of Shreeram Gurukul English Medium School can join our official WhatsApp group to
+          receive school updates, notices and important announcements directly on their phone.
+        </p>
+      </div>
+      <a class="btn btn--whatsapp" href="https://chat.whatsapp.com/DppskBPSvSM0UWi53ANA8M?mode=gi_t" target="_blank" rel="noopener noreferrer" data-whatsapp>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.5 9.5 0 0 1-3-.5L4 21l1.4-4.2A8.2 8.2 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5Z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/></svg>
+        Join Our WhatsApp Group
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PHOTO SLIDER ========================== -->
+<section class="section section--white" id="photos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Photo gallery</span>
+      <h2>A Look Around Our School</h2>
+      <p>Photographs of our school building, classrooms, activities and celebrations — one photo at a time.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="slider-shell" id="photoSlider" aria-roledescription="carousel" aria-label="School photo gallery">
+        <div class="slider-viewport">
+          <div class="slider-track" id="sliderTrack"><!-- slides are generated from SITE_IMAGES.slider --></div>
+        </div>
+
+        <button class="slider-arrow prev" type="button" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </button>
+        <button class="slider-arrow next" type="button" aria-label="Next photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg>
+        </button>
+      </div>
+
+      <div class="slider-nav">
+        <div class="slider-dots" id="sliderDots" role="tablist" aria-label="Choose a photo"></div>
+        <span class="slider-count" id="sliderCount">1 / 6</span>
+      </div>
+    </div>
+
+    <p class="slider-hint">
+      The photographs in this gallery will be replaced with real pictures of Shreeram Gurukul English
+      Medium School. Administrators will be able to add, remove and reorder them from the admin panel.
+    </p>
+  </div>
+</section>
+
+<!-- ============================== OUR CLASSES =========================== -->
+<section class="section section--cream" id="academics">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Academics</span>
+      <h2>Our Classes</h2>
+      <p>Shreeram Gurukul English Medium School offers exactly three pre-primary classes — Nursery, Jr. KG and Sr. KG — each designed for the stage your child is growing through.</p>
+    </div>
+
+    <div class="class-grid">
+      <article class="class-card reveal">
+        <div class="class-top">
+          <span class="class-icon tint-amber" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/></svg>
+          </span>
+          <span class="class-index" aria-hidden="true">01</span>
+        </div>
+        <h3>Nursery</h3>
+        <p>A joyful first step into school and early learning.</p>
+        <div class="class-note">A gentle introduction to routines, play and togetherness.</div>
+      </article>
+
+      <article class="class-card reveal">
+        <div class="class-top">
+          <span class="class-icon tint-teal" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v16H6.5A2.5 2.5 0 0 0 4 21.5Z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H12v16h5.5A2.5 2.5 0 0 1 20 21.5Z"/></svg>
+          </span>
+          <span class="class-index" aria-hidden="true">02</span>
+        </div>
+        <h3>Jr. KG</h3>
+        <p>Building confidence, curiosity and foundational skills.</p>
+        <div class="class-note">Early language, numbers, expression and independence.</div>
+      </article>
+
+      <article class="class-card reveal">
+        <div class="class-top">
+          <span class="class-icon tint-blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11.5V17c0 1.1 2.7 2 6 2s6-.9 6-2v-5.5"/></svg>
+          </span>
+          <span class="class-index" aria-hidden="true">03</span>
+        </div>
+        <h3>Sr. KG</h3>
+        <p>Preparing children for the next stage of their educational journey.</p>
+        <div class="class-note">Readiness, reasoning and school confidence for what comes next.</div>
+      </article>
+    </div>
+
+    <p class="classes-note">
+      Our school offers three classes only: <strong>Nursery</strong>, <strong>Jr. KG</strong> and <strong>Sr. KG</strong>.
+      Admission enquiries for all three classes are welcome.
+    </p>
+  </div>
+</section>
+
+<!-- ============================= WHY CHOOSE US ========================== -->
+<section class="section section--white" id="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why parents choose us</span>
+      <h2>Why Choose Shreeram Gurukul</h2>
+      <p>The early years deserve care, attention and the right environment. Here is what we focus on every single day.</p>
+    </div>
+
+    <div class="why-grid">
+      <article class="why-card reveal">
+        <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.2-2.9 7.4-7 9-4.1-1.6-7-4.8-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3>Safe &amp; Caring Environment</h3>
+        <p>A secure, welcoming space where children feel protected and at ease.</p>
+      </article>
+
+      <article class="why-card reveal">
+        <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7 3.5C19 15.6 12 20 12 20Z"/></svg></span>
+        <h3>Child-Centered Learning</h3>
+        <p>Teaching shaped around how young children naturally learn and grow.</p>
+      </article>
+
+      <article class="why-card reveal">
+        <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4H8a3 3 0 0 0-3 3v13h12a3 3 0 0 0 3-3V4Z"/><path d="M5 7H4a1 1 0 0 0-1 1v13h14"/><path d="M12 8v8M8.5 12h7"/></svg></span>
+        <h3>Activity-Based Learning</h3>
+        <p>Concepts introduced through play, art, music, movement and hands-on activities.</p>
+      </article>
+
+      <article class="why-card reveal">
+        <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></span>
+        <h3>Experienced &amp; Caring Teachers</h3>
+        <p>Patient, attentive teachers who know every child by name and nature.</p>
+      </article>
+
+      <article class="why-card reveal">
+        <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.6"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/></svg></span>
+        <h3>Holistic Development</h3>
+        <p>Social, emotional, physical and creative growth along with early academics.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== ACTIVITIES ============================ -->
+<section class="section section--cream" id="activities">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Beyond the classroom</span>
+      <h2>Learning Through Activities</h2>
+      <p>Every activity is a learning opportunity for a young child. These are the experiences our children enjoy through the school year.</p>
+    </div>
+
+    <div class="activity-grid">
+      <article class="media-card reveal">
+        <div class="ph" data-img="activities.art" role="img" aria-label="Placeholder for an Art and Craft activity photograph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.7 0 2.5-1.1 2.5-2.2 0-1.6-1.5-2.3-1.5-3.3 0-.9.7-1.5 1.7-1.5H17a4 4 0 0 0 4-4c0-4-4-7-9-7Z"/><circle cx="8.5" cy="10" r="1.1"/><circle cx="12" cy="7.6" r="1.1"/><circle cx="15.6" cy="10" r="1.1"/></svg>
+          <span class="ph-label">Art &amp; Craft</span>
+          <span class="ph-hint">Replace with a real photo</span>
+        </div>
+        <div class="media-body">
+          <h3>Art &amp; Craft</h3>
+          <p>Colours, paper, clay and imagination — building fine motor skills and self-expression.</p>
+        </div>
+      </article>
+
+      <article class="media-card reveal">
+        <div class="ph" data-img="activities.storytelling" role="img" aria-label="Placeholder for a storytelling photograph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5S9.5 4.5 5 4.5v13C9.5 17.5 12 19.5 12 19.5s2.5-2 7-2v-13c-4.5 0-7 2-7 2Z"/><path d="M12 6.5v13"/></svg>
+          <span class="ph-label">Storytelling</span>
+          <span class="ph-hint">Replace with a real photo</span>
+        </div>
+        <div class="media-body">
+          <h3>Storytelling</h3>
+          <p>Stories that build listening skills, vocabulary and a lifelong love for books.</p>
+        </div>
+      </article>
+
+      <article class="media-card reveal">
+        <div class="ph" data-img="activities.music" role="img" aria-label="Placeholder for a music and rhymes photograph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>
+          <span class="ph-label">Music &amp; Rhymes</span>
+          <span class="ph-hint">Replace with a real photo</span>
+        </div>
+        <div class="media-body">
+          <h3>Music &amp; Rhymes</h3>
+          <p>Rhythm, rhyme and movement that help children remember and enjoy learning.</p>
+        </div>
+      </article>
+
+      <article class="media-card reveal">
+        <div class="ph" data-img="activities.outdoor" role="img" aria-label="Placeholder for an outdoor activities photograph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3c2.5 3 2.5 15 0 18M3 12h18"/></svg>
+          <span class="ph-label">Outdoor Activities</span>
+          <span class="ph-hint">Replace with a real photo</span>
+        </div>
+        <div class="media-body">
+          <h3>Outdoor Activities</h3>
+          <p>Play, movement and fresh air — essential for healthy growth and happy energy.</p>
+        </div>
+      </article>
+
+      <article class="media-card reveal">
+        <div class="ph" data-img="activities.celebrations" role="img" aria-label="Placeholder for a celebration photograph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.5-11L14 14.5 4 20Z"/><path d="M15.5 5.5v-3M19.5 8h3M18.4 4.6l1.8-1.8M17.2 11.6l2.3-.6"/></svg>
+          <span class="ph-label">Celebrations</span>
+          <span class="ph-hint">Replace with a real photo</span>
+        </div>
+        <div class="media-body">
+          <h3>Celebrations</h3>
+          <p>Festivals, special days and school events that children look forward to together.</p>
+        </div>
+      </article>
+
+      <article class="media-card reveal">
+        <div class="ph" data-img="activities.creative" role="img" aria-label="Placeholder for a creative learning photograph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 17.5h5M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5.9 1.1.9 1.9v.7h5.2v-.7c0-.8.3-1.4.9-1.9A6 6 0 0 0 12 3Z"/></svg>
+          <span class="ph-label">Creative Learning</span>
+          <span class="ph-hint">Replace with a real photo</span>
+        </div>
+        <div class="media-body">
+          <h3>Creative Learning</h3>
+          <p>Simple experiments, puzzles and thinking games that spark curiosity and questions.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== ADMISSIONS ============================ -->
+<section class="section section--white" id="admissions">
+  <div class="container">
+    <div class="cta-band reveal">
+      <div class="cta-inner">
+        <div class="cta-copy">
+          <span class="eyebrow">Admissions</span>
+          <h2>Admissions Open</h2>
+          <p>Give your child a joyful and meaningful beginning to their learning journey.</p>
+          <p style="margin-top:.9rem;font-size:.9rem;color:rgba(255,255,255,.78)">
+            Applications are invited for Nursery, Jr. KG and Sr. KG.
+          </p>
+        </div>
+        <div class="cta-side">
+          <a class="btn btn--light" href="#contact" data-enquiry>
+            Admission Enquiry
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+          <small>The online enquiry form will be available here shortly.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== NOTICES ============================== -->
+<section class="section section--cream" id="notices">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">School updates</span>
+      <h2>Latest Notices</h2>
+      <p>Announcements, circulars and important updates for parents will be published here.</p>
+    </div>
+
+    <!-- Rendered from the NOTICES list at the bottom of this file.
+         Later, the admin panel will add / edit / remove these entries. -->
+    <div class="notices-wrap" id="noticeList"></div>
+
+    <p class="notice-foot">
+      The notices shown above are sample placeholders. An administrator will be able to add, edit
+      and remove notices from the school's admin panel.
+    </p>
+  </div>
+</section>
+
+<!-- =============================== GALLERY ============================== -->
+<section class="section section--white" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">A look around</span>
+      <h2>Our School Gallery</h2>
+      <p>Glimpses of everyday life at Shreeram Gurukul English Medium School — the campus, classrooms, activities and celebrations.</p>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <figure class="gallery-item ph reveal" data-img="gallery.building" role="img" aria-label="Placeholder: School Building photograph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span class="ph-label">School Building</span><span class="ph-hint">Replace with real photo</span>
+      </figure>
+      <figure class="gallery-item ph reveal" data-img="gallery.classroom" role="img" aria-label="Placeholder: Classroom photograph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <span class="ph-label">Classrooms</span><span class="ph-hint">Replace with real photo</span>
+      </figure>
+      <figure class="gallery-item ph reveal" data-img="gallery.activity" role="img" aria-label="Placeholder: Activity session photograph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17M3.5 12h17"/></svg>
+        <span class="ph-label">Activities</span><span class="ph-hint">Replace with real photo</span>
+      </figure>
+      <figure class="gallery-item ph reveal" data-img="gallery.event" role="img" aria-label="Placeholder: School event photograph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3.5v3M16 3.5v3M3.5 10h17"/></svg>
+        <span class="ph-label">Events</span><span class="ph-hint">Replace with real photo</span>
+      </figure>
+      <figure class="gallery-item ph reveal" data-img="gallery.celebration" role="img" aria-label="Placeholder: Celebration photograph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.5-11L14 14.5 4 20Z"/><path d="M15.5 5.5v-3M19.5 8h3"/></svg>
+        <span class="ph-label">Celebrations</span><span class="ph-hint">Replace with real photo</span>
+      </figure>
+      <figure class="gallery-item ph reveal" data-img="gallery.students" role="img" aria-label="Placeholder: Photograph of students' activities">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="2.8"/><circle cx="16" cy="10" r="2.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M14.5 19a4.5 4.5 0 0 1 6-4.3"/></svg>
+        <span class="ph-label">Students' Activities</span><span class="ph-hint">Replace with real photo</span>
+      </figure>
+      <figure class="gallery-item ph reveal" data-img="gallery.reading" role="img" aria-label="Placeholder: Reading corner photograph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v16H6.5A2.5 2.5 0 0 0 4 21.5Z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H12v16h5.5A2.5 2.5 0 0 1 20 21.5Z"/></svg>
+        <span class="ph-label">Reading Corner</span><span class="ph-hint">Replace with real photo</span>
+      </figure>
+      <figure class="gallery-item ph reveal" data-img="gallery.assembly" role="img" aria-label="Placeholder: Morning assembly photograph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+        <span class="ph-label">Morning Assembly</span><span class="ph-hint">Replace with real photo</span>
+      </figure>
+      <figure class="gallery-item ph reveal" data-img="gallery.play" role="img" aria-label="Placeholder: Play area photograph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V9M19 20V9M5 9l7-5 7 5"/><path d="M5 14h14"/></svg>
+        <span class="ph-label">Play Area</span><span class="ph-hint">Replace with real photo</span>
+      </figure>
+    </div>
+
+    <p class="slider-hint">
+      Every photograph above can be replaced with a real picture of our school building, classrooms,
+      activities, events, celebrations and students' activities.
+    </p>
+  </div>
+</section>
+
+<!-- ============================= PARENT PORTAL ========================== -->
+<section class="section section--cream" id="portal">
+  <div class="container">
+    <div class="portal reveal">
+      <div class="portal-grid">
+        <div>
+          <span class="eyebrow eyebrow--light">For parents</span>
+          <h2>Parent Portal</h2>
+          <p class="lead">Stay connected with your child's school journey.</p>
+          <div class="portal-cta">
+            <button class="btn btn--accent" type="button" data-portal-login>
+              Parent Login
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/><path d="M10 8l-4 4 4 4M6 12h9"/></svg>
+            </button>
+            <small>Parent login will be available soon.</small>
+          </div>
+          <p class="portal-managed">
+            Homepage content, photographs, notices and contact details on this website are managed
+            by the school through its admin panel.
+          </p>
+        </div>
+
+        <ul class="portal-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg> Attendance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg> Assessments</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg> Fee information</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg> Notices</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg> School updates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== CONTACT ============================== -->
+<section class="section section--white" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Contact Us</h2>
+      <p>We would be happy to answer your questions about the school and the admission process.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-list reveal">
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+          <div>
+            <h3>School Address</h3>
+            <p data-site="address">
+              Dongargaon, Taluka - Sangola,<br>
+              District - Solapur,<br>
+              Maharashtra<br>
+              PIN - 413309
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3.5l1.6 4-2 1.3a12 12 0 0 0 5.6 5.6l1.3-2 4 1.6V19a1.5 1.5 0 0 1-1.7 1.5A15.5 15.5 0 0 1 3.5 5.7 1.5 1.5 0 0 1 5 4Z"/></svg></span>
+          <div>
+            <h3>Phone</h3>
+            <p><a href="tel:+919767174229" data-site="phoneLink">9767174229</a></p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span>
+          <div>
+            <h3>Email</h3>
+            <p class="placeholder-value" data-site="email">[Email will be added later]</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-frame reveal" role="img" aria-label="Placeholder for the school location on Google Maps">
+        <div class="ph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span class="ph-label">Google Maps</span>
+          <span class="ph-hint">Map for Dongargaon, Taluka Sangola, Dist. Solapur will be embedded here</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- =================== FOOTER (WhatsApp at the end) ===================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true">SG</span>
+          <span class="brand-text">
+            <span class="brand-name" data-site="shortName">Shreeram Gurukul</span>
+            <span class="brand-sub">English Medium School</span>
+          </span>
+        </div>
+        <p class="footer-about">
+          A pre-primary school for Nursery, Jr. KG and Sr. KG — a joyful beginning to your child's
+          learning journey.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>For Parents</h4>
+        <ul>
+          <li><a href="#notices">Latest Notices</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#" data-portal-login>Parent Login</a></li>
+          <li><a href="#admissions">Admission Enquiry</a></li>
+        </ul>
+        <a class="btn btn--whatsapp btn--sm footer-btn" href="https://chat.whatsapp.com/DppskBPSvSM0UWi53ANA8M?mode=gi_t" target="_blank" rel="noopener noreferrer" data-whatsapp>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.5 9.5 0 0 1-3-.5L4 21l1.4-4.2A8.2 8.2 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5Z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/></svg>
+          Join Our WhatsApp Group
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Reach Us</h4>
+        <ul class="footer-contact">
+          <li data-site="address">
+            Dongargaon, Taluka - Sangola,<br>
+            District - Solapur,<br>
+            Maharashtra<br>
+            PIN - 413309
+          </li>
+          <li>Phone: <a href="tel:+919767174229" data-site="phoneLink">9767174229</a></li>
+          <li><span class="placeholder-value" data-site="email">[Email will be added later]</span></li>
+        </ul>
+        <button class="footer-admin" type="button" data-admin-login>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+          Admin Login
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> Shreeram Gurukul English Medium School. All Rights Reserved.</span>
+      <span>Nursery &middot; Jr. KG &middot; Sr. KG &middot; Since 2026</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ==========================================================================
+   1. SITE INFORMATION  —  editable by the school administrator
+   --------------------------------------------------------------------------
+   These are the values the admin panel will manage later. Update them here
+   and they are applied across the whole homepage automatically.
+   ========================================================================== */
+const SITE = {
+  name:            "Shreeram Gurukul English Medium School",
+  shortName:       "Shreeram Gurukul",
+  type:            "Pre-Primary School",
+  established:     "Established: Since 2026",
+  establishedShort:"Since 2026",
+  chairperson:     "Rajendra Maruti Babary",
+  classes:         ["Nursery", "Jr. KG", "Sr. KG"],
+  address:         "Dongargaon, Taluka - Sangola,\nDistrict - Solapur,\nMaharashtra\nPIN - 413309",
+  addressInline:   "Dongargaon, Taluka - Sangola, District - Solapur, Maharashtra 413309",
+  phone:           "9767174229",
+  phoneLink:       "+919767174229",
+  email:           "",                    // "" shows the "[Email will be added later]" placeholder
+  emailPlaceholder:"[Email will be added later]",
+  whatsappGroup:   "https://chat.whatsapp.com/DppskBPSvSM0UWi53ANA8M?mode=gi_t"
+};
+
+/* ==========================================================================
+   2. IMAGE CONFIGURATION  —  THE ONLY PLACE YOU NEED TO EDIT FOR PHOTOGRAPHS
+   --------------------------------------------------------------------------
+   NOTE: the website starts with the WELCOME message, so there is no photo at
+   the very top. The school photographs appear in the Intro (About) section
+   and in the two gallery sections below it.
+
+   • about      : the large school photograph in the Intro / About section
+   • slider     : the photo gallery slides (add or remove entries freely)
+   • activities : one photograph per activity card
+   • gallery    : one photograph per gallery tile
+   Leave any "src"/value as "" to keep the labelled placeholder.
+   Example:  about: "images/school-building.jpg"
+   ========================================================================== */
+const SITE_IMAGES = {
+  about: "",                      // e.g. "images/shreeram-gurukul-school-building.jpg"
+
+  // Photo gallery slider — shown below the intro.
+  // Add more objects to add more slides; the dots and counter update automatically.
+  slider: [
+    { src: "", label: "School Building",      hint: "Main photograph of the school building" },
+    { src: "", label: "Classrooms",           hint: "Replace with a real classroom photo" },
+    { src: "", label: "Activity Sessions",    hint: "Replace with a real activity photo" },
+    { src: "", label: "School Events",        hint: "Replace with a real event photo" },
+    { src: "", label: "Celebrations",         hint: "Replace with a real celebration photo" },
+    { src: "", label: "Students at Work",     hint: "Replace with a real students' photo" }
+  ],
+
+  activities: {
+    art: "",
+    storytelling: "",
+    music: "",
+    outdoor: "",
+    celebrations: "",
+    creative: ""
+  },
+  gallery: {
+    building: "",
+    classroom: "",
+    activity: "",
+    event: "",
+    celebration: "",
+    students: "",
+    reading: "",
+    assembly: "",
+    play: ""
+  }
+};
+
+/* ==========================================================================
+   3. NOTICES  —  sample placeholders (admin panel will manage these later)
+   Each notice: { date, tag, title, body }
+   ========================================================================== */
+const NOTICES = [
+  {
+    date: "[Date]",
+    tag: "[Category]",
+    title: "[Notice title — e.g. Holiday announcement]",
+    body: "Placeholder content. A real announcement published by the school will be displayed here."
+  },
+  {
+    date: "[Date]",
+    tag: "[Category]",
+    title: "[Notice title — e.g. Event circular]",
+    body: "Placeholder content. Event details, dates and instructions for parents will appear here."
+  },
+  {
+    date: "[Date]",
+    tag: "[Category]",
+    title: "[Notice title — e.g. Parent communication]",
+    body: "Placeholder content. Messages from the school to parents will be shown in this space."
+  },
+  {
+    date: "[Date]",
+    tag: "[Category]",
+    title: "[Notice title — e.g. Important update]",
+    body: "Placeholder content. Notices can be added, edited or removed from the school's admin panel."
+  }
+];
+
+/* ==========================================================================
+   4. HELPERS
+   ========================================================================== */
+const $  = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+/* Read a value like "activities.art" out of SITE_IMAGES */
+function getImage(path) {
+  return path.split(".").reduce((acc, key) => (acc == null ? undefined : acc[key]), SITE_IMAGES);
+}
+
+/* ==========================================================================
+   5. APPLY SCHOOL INFORMATION (data-site attributes)
+   ========================================================================== */
+function applySiteInfo() {
+  $$("[data-site]").forEach(el => {
+    const key = el.dataset.site;
+
+    if (key === "address") {
+      const value = (SITE.address || "").trim();
+      if (value) el.innerHTML = value.split("\n").join("<br>");
+      return;
+    }
+    if (key === "phoneLink") {
+      const value = (SITE.phone || "").trim();
+      if (!value) return;
+      el.textContent = value;
+      if (el.tagName === "A") el.href = "tel:" + (SITE.phoneLink || value);
+      return;
+    }
+    if (key === "email") {
+      const value = (SITE.email || "").trim();
+      if (value) {
+        el.classList.remove("placeholder-value");
+        el.textContent = value;
+        if (el.tagName === "A") el.href = "mailto:" + value;
+      }
+      return;
+    }
+    const value = SITE[key];
+    if (value) el.textContent = value;
+  });
+
+  // WhatsApp group link is configurable from the same place
+  const whatsapp = (SITE.whatsappGroup || "").trim();
+  if (whatsapp) $$("[data-whatsapp]").forEach(el => { el.href = whatsapp; });
+}
+
+/* ==========================================================================
+   6. APPLY IMAGES (About photo, activity photos, gallery photos)
+   ========================================================================== */
+function applyImages() {
+  $$("[data-img]").forEach(el => {
+    const url = (getImage(el.dataset.img) || "").trim();
+    if (url) {
+      el.style.backgroundImage = `url("${url}")`;
+      el.classList.add("has-img");
+    }
+  });
+}
+
+/* ==========================================================================
+   7. PHOTO SLIDER (gallery section)
+   ========================================================================== */
+function initSlider() {
+  const track    = $("#sliderTrack");
+  const dotsWrap = $("#sliderDots");
+  const counter  = $("#sliderCount");
+  const shell    = $("#photoSlider");
+  if (!track || !dotsWrap) return;
+
+  const slides = SITE_IMAGES.slider || [];
+  if (!slides.length) { if (shell) shell.style.display = "none"; return; }
+
+  const photoIcon = `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/>
+      <path d="m4 18 5.5-5.2 3.2 3 3.3-3.1L20 18"/>
+    </svg>`;
+
+  // Build the slides
+  track.innerHTML = slides.map((slide, i) => {
+    const hasPhoto = (slide.src || "").trim();
+    return `
+      <figure class="slide" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${slides.length}">
+        <div class="ph${hasPhoto ? " has-img" : ""}"${hasPhoto ? ` style="background-image:url('${hasPhoto}')"` : ""}
+             role="img" aria-label="${slide.label || "School photograph"}">
+          ${photoIcon}
+          <span class="ph-label">${slide.label || "School Photograph"}</span>
+          <span class="ph-hint">${slide.hint || "Replace with a real school photograph"}</span>
+        </div>
+        <figcaption class="slide-caption">${slide.label || ""}</figcaption>
+      </figure>`;
+  }).join("");
+
+  const slideEls = $$(".slide", track);
+  let index = 0;
+  let timer = null;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Build the dots
+  dotsWrap.innerHTML = slides.map((s, i) =>
+    `<button type="button" role="tab" aria-label="Show photo ${i + 1}: ${s.label || ""}"></button>`
+  ).join("");
+  const dots = $$("button", dotsWrap);
+
+  function go(i) {
+    index = (i + slideEls.length) % slideEls.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, j) => {
+      dot.classList.toggle("is-active", j === index);
+      dot.setAttribute("aria-selected", String(j === index));
+    });
+    slideEls.forEach((s, j) => s.setAttribute("aria-hidden", String(j !== index)));
+    if (counter) counter.textContent = `${index + 1} / ${slideEls.length}`;
+  }
+  const next = () => go(index + 1);
+  const prev = () => go(index - 1);
+
+  function start() {
+    if (reduceMotion || slideEls.length < 2) return;
+    stop();
+    timer = setInterval(next, 5500);   // automatic sliding
+  }
+  function stop() { if (timer) clearInterval(timer); timer = null; }
+  function restart() { stop(); start(); }
+
+  // Manual navigation
+  const nextBtn = $(".slider-arrow.next");
+  const prevBtn = $(".slider-arrow.prev");
+  if (nextBtn) nextBtn.addEventListener("click", () => { next(); restart(); });
+  if (prevBtn) prevBtn.addEventListener("click", () => { prev(); restart(); });
+  dots.forEach((dot, i) => dot.addEventListener("click", () => { go(i); restart(); }));
+
+  // Pause while hovering or focused, and when the tab is hidden
+  if (shell) {
+    shell.addEventListener("mouseenter", stop);
+    shell.addEventListener("mouseleave", start);
+    shell.addEventListener("focusin", stop);
+    shell.addEventListener("focusout", start);
+  }
+  document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
+
+  // Keyboard support
+  if (shell) {
+    shell.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight") { next(); restart(); }
+      if (e.key === "ArrowLeft")  { prev(); restart(); }
+    });
+  }
+
+  // Swipe support on touch devices
+  let startX = null;
+  track.addEventListener("touchstart", e => { startX = e.touches[0].clientX; stop(); }, { passive: true });
+  track.addEventListener("touchend", e => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+    startX = null;
+    start();
+  }, { passive: true });
+
+  go(0);
+  start();
+}
+
+/* ==========================================================================
+   8. RENDER NOTICES
+   ========================================================================== */
+function renderNotices() {
+  const list = $("#noticeList");
+  if (!list) return;
+
+  if (!NOTICES.length) {
+    list.innerHTML = '<p class="notice-foot">No notices have been published yet.</p>';
+    return;
+  }
+
+  list.innerHTML = NOTICES.map(n => `
+    <article class="notice reveal">
+      <div class="notice-date">${n.date}</div>
+      <div class="notice-main">
+        <h3>${n.title}</h3>
+        <p>${n.body}</p>
+      </div>
+      <span class="notice-tag">${n.tag}</span>
+    </article>
+  `).join("");
+}
+
+/* ==========================================================================
+   9. TOAST (in-page message)
+   ========================================================================== */
+let toastTimer;
+function showToast(message) {
+  const toast = $("#toast");
+  toast.textContent = message;
+  toast.classList.add("is-visible");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 4400);
+}
+
+/* ==========================================================================
+   10. HEADER, MOBILE MENU, REVEAL ANIMATIONS, ACTIONS
+   ========================================================================== */
+function initHeader() {
+  const header = $("#siteHeader");
+  const toggle = $(".menu-toggle");
+  const panel  = $("#mobilePanel");
+
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 12);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  toggle.addEventListener("click", () => {
+    const open = header.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    panel.style.display = open ? "block" : "none";
+  });
+
+  panel.addEventListener("click", e => {
+    if (e.target.tagName === "A") {
+      header.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      panel.style.display = "none";
+    }
+  });
+}
+
+function initReveal() {
+  const items = $$(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    items.forEach(el => el.classList.add("is-visible"));
+    return;
+  }
+  const io = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  items.forEach(el => io.observe(el));
+}
+
+function initActions() {
+  // Parent login placeholder
+  $$("[data-portal-login]").forEach(el => {
+    el.addEventListener("click", e => {
+      e.preventDefault();
+      showToast("The Parent Portal is being prepared. Parent login will be available here soon.");
+    });
+  });
+
+  // Admin login placeholder — the admin panel will manage homepage content,
+  // photographs, gallery, notices, activities, admissions and contact details.
+  $$("[data-admin-login]").forEach(el => {
+    el.addEventListener("click", e => {
+      e.preventDefault();
+      showToast("Admin login will be available soon. Homepage content is currently updated by the website developer.");
+    });
+  });
+
+  // Admission enquiry links (smooth scroll to the contact section for now)
+  $$("[data-enquiry]").forEach(el => {
+    el.addEventListener("click", () => {
+      showToast("The admission enquiry form is coming soon. Meanwhile, please use the contact details below.");
+    });
+  });
+
+  // Highlight the nav link for the section in view
+  const navLinks = $$(".nav a");
+  const sections = navLinks
+    .map(a => document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(a => a.classList.toggle("is-active", a.getAttribute("href") === "#" + entry.target.id));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    sections.forEach(s => spy.observe(s));
+  }
+}
+
+/* ==========================================================================
+   11. INIT
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  applySiteInfo();
+  initSlider();
+  applyImages();
+  renderNotices();
+  initHeader();
+  initReveal();
+  initActions();
+  $("#year").textContent = new Date().getFullYear();
+});
+</script>
+</body>
 </html>
+<script data-huggingchat-badge="script">
+(function () {
+	try {
+		if (document.querySelector("[data-huggingchat-badge]:not(script)")) return;
+		var host = document.createElement("div");
+		host.setAttribute("data-huggingchat-badge", "");
+		var styles = [["all","initial"],["position","fixed"],["right","12px"],["bottom","12px"],["z-index","2147483647"],["display","block"],["visibility","visible"],["opacity","1"],["pointer-events","auto"],["width","auto"],["height","auto"],["margin","0"],["padding","0"],["max-width","none"],["max-height","none"],["transform","none"],["filter","none"],["clip-path","none"],["color-scheme","light"]];
+		for (var i = 0; i < styles.length; i++) {
+			host.style.setProperty(styles[i][0], styles[i][1], "important");
+		}
+		host.attachShadow({ mode: "closed" }).innerHTML = "<style>\n:host { all: initial; }\na {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  box-sizing: border-box;\n  height: 26px;\n  padding: 0 9px 0 7px;\n  border-radius: 999px;\n  border: 1px solid rgba(0, 0, 0, 0.07);\n  background: rgba(255, 255, 255, 0.92);\n  -webkit-backdrop-filter: saturate(180%) blur(8px);\n  backdrop-filter: saturate(180%) blur(8px);\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 6px 16px rgba(0, 0, 0, 0.06);\n  color: #111827;\n  font: 500 11px/1 ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif;\n  text-decoration: none;\n  white-space: nowrap;\n  opacity: 0.72;\n  transition: opacity 0.15s ease, transform 0.15s ease;\n}\na:hover, a:focus-visible { opacity: 1; transform: translateY(-1px); }\nsvg { width: 14px; height: 14px; flex: none; }\n@media print { a { display: none; } }\n<\/style><a href=\"https://huggingface.co/chat\" target=\"_blank\" rel=\"noopener noreferrer nofollow\"><svg viewBox=\"0 0 32 32\" fill=\"none\" aria-hidden=\"true\"><path d=\"M16.0006 25.9992C13.8266 25.999 11.7118 25.2901 9.97686 23.9799C8.2419 22.6698 6.98127 20.8298 6.38599 18.7388C5.79071 16.6478 5.89323 14.4198 6.678 12.3923C7.46278 10.3648 8.88705 8.64837 10.735 7.50308C12.5829 6.35779 14.7538 5.84606 16.9187 6.04544C19.0837 6.24481 21.1246 7.14442 22.7323 8.60795C24.34 10.0715 25.4268 12.0192 25.8281 14.1559C26.2293 16.2926 25.9232 18.5019 24.9561 20.449C24.7703 20.8042 24.7223 21.2155 24.8211 21.604L25.4211 23.8316C25.4803 24.0518 25.4805 24.2837 25.4216 24.5039C25.3627 24.7242 25.2468 24.925 25.0856 25.0862C24.9244 25.2474 24.7235 25.3633 24.5033 25.4222C24.283 25.4811 24.0512 25.4809 23.831 25.4217L21.6034 24.8217C21.2172 24.7248 20.809 24.7729 20.4558 24.9567C19.0683 25.6467 17.5457 26.0068 16.0006 26.0068V25.9992Z\" fill=\"currentColor\"/><path d=\"M9.62598 16.0013C9.62598 15.3799 10.1294 14.8765 10.7508 14.8765C11.3721 14.8765 11.8756 15.3799 11.8756 16.0013C11.8756 17.0953 12.3102 18.1448 13.0838 18.9184C13.8574 19.692 14.9069 20.1266 16.001 20.1267C17.095 20.1267 18.1445 19.692 18.9181 18.9184C19.6918 18.1448 20.1264 17.0953 20.1264 16.0013C20.1264 15.3799 20.6299 14.8765 21.2512 14.8765C21.8725 14.8765 22.3759 15.3799 22.3759 16.0013C22.3759 17.6921 21.7046 19.3137 20.509 20.5093C19.3134 21.7049 17.6918 22.3762 16.001 22.3762C14.3102 22.3762 12.6885 21.7049 11.4929 20.5093C10.2974 19.3137 9.62598 17.6921 9.62598 16.0013Z\" fill=\"#fff\"/><\/svg><span>Made with HuggingChat<\/span><\/a>";
+		function attach() {
+			var parent = document.body || document.documentElement;
+			if (parent && host.parentNode !== parent) parent.appendChild(host);
+		}
+		attach();
+		// Artifacts that rewrite document.body wholesale would drop the badge.
+		if (document.body && typeof MutationObserver === "function") {
+			new MutationObserver(attach).observe(document.body, { childList: true });
+		} else {
+			document.addEventListener("DOMContentLoaded", attach);
+		}
+	} catch (e) {}
+})();
+</script>
